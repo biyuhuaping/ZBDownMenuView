@@ -32,7 +32,9 @@
         NSLog(@"%@",string);
     };
 }
+```
 
+```
 /**
 *  回调方式二: delegate，实现<ZBDownMenuViewDelegate>协议
 */
@@ -40,3 +42,7 @@
     [NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", title, currentTitleArray];
 }
 ```
+
+个人博客地址：
+https://www.jianshu.com/p/b4c5c3797fa6
+http://blog.csdn.net/biyuhuaping/article/details/79322101
