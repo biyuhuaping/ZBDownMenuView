@@ -25,8 +25,6 @@
 /* 配置DownMenuView */
 - (void)conflictingDownMenuView {
     _downMenuView.titleArray = [NSArray arrayWithObjects:@"综合排序",@"价格", @"时间", nil];
-
-    // 注:  需先 赋值数据源dataSourceArr二维数组  再赋值titleArray一维数组
     _downMenuView.dataSourceArr = @[@[@"速度最快", @"评分最高", @"起送价格最低", @"配送费最低", @"人均高到低", @"人均低到高"],
                                         @[@"0-50元", @"50-100元", @"100-200元", @"200元以上"],
                                         @[@"1分钟以内", @"1-3分钟", @"3-5分钟", @"5分钟以上"]
