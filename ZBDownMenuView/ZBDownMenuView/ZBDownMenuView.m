@@ -34,9 +34,16 @@
 @property (strong, nonatomic) NSMutableArray *buttonArray;
 @property (strong, nonatomic) UIButton *currentButton;
 
+/* 分类内容 动画起始位置 */
+@property (assign, nonatomic) CGFloat startY;
+
 @end
 
 @implementation ZBDownMenuView
+
+- (void)layoutSubviews{
+    self.startY = CGRectGetMaxY(self.frame);
+}
 
 #pragma mark - lazy
 /* 蒙层view */
@@ -206,17 +213,6 @@
     // 走block
     !self.conditionBlock?:self.conditionBlock(self.dataSource[indexPath.row],currentTitleArr);
     [self hideMenuView];
-}
-
-- (void)dealloc{
-    // 此处 千万不能写作 !self.bgView?:[self.bgView removeFromSuperview];  会崩
-    !_bgView?:[_bgView removeFromSuperview];
-    _bgView = nil;
-    
-    !_tableView?:[_tableView removeFromSuperview];
-    _tableView = nil;
-    
-    self.dataSource = nil;
 }
 
 @end

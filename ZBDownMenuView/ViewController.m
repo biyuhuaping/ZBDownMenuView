@@ -10,7 +10,7 @@
 #import "ZBDownMenuView.h"
 
 @interface ViewController ()<ZBDownMenuViewDelegate>
-@property (nonatomic, strong) IBOutlet ZBDownMenuView *downMenuView;
+@property (strong, nonatomic) IBOutlet ZBDownMenuView *downMenuView;
 @property (strong, nonatomic) NSMutableArray *dataListArray;
 @property (strong, nonatomic) NSMutableArray *allDataArray;
 @end
@@ -19,18 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self conflictingDownMenuView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self conflictingDropDownMenuView];
-}
-
-/* 配置CFDropDownMenuView */
-- (void)conflictingDropDownMenuView {
-    // 下拉列表 起始y
-    _downMenuView.startY = CGRectGetMaxY(_downMenuView.frame);
+/* 配置DownMenuView */
+- (void)conflictingDownMenuView {
     _downMenuView.titleArray = [NSArray arrayWithObjects:@"综合排序",@"价格", @"时间", nil];
 
     // 注:  需先 赋值数据源dataSourceArr二维数组  再赋值titleArray一维数组
@@ -44,7 +37,8 @@
      */
     __weak typeof(self) weakSelf = self;
     _downMenuView.conditionBlock = ^(NSString *currentTitle, NSArray *currentTitleArray){
-        [NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", currentTitle, currentTitleArray];
+        NSString *string = [NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", currentTitle, currentTitleArray];
+        NSLog(@"%@",string);
     };
 }
 

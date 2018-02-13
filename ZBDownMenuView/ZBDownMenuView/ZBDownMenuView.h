@@ -32,9 +32,6 @@ typedef void (^ConditionBlock)(NSString *, NSArray *);
 /* 默认显示的 */
 @property (strong, nonatomic) NSArray *titleArray;
 
-/* 分类内容 动画起始位置 */
-@property (assign, nonatomic) CGFloat startY;
-
 /**
  * 显示菜单
  */
