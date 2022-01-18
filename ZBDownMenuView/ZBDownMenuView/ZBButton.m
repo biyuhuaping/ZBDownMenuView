@@ -10,10 +10,11 @@
 
 @implementation ZBButton
 
-+ (instancetype)buttonTitle:(NSString *)title image:(NSString *)imgName target:(id)target action:(SEL)action {
++ (instancetype)buttonTitle:(NSString *)title norImgName:(NSString *)norImgName selImgName:(NSString *)selImgName target:(id)target action:(SEL)action {
     ZBButton *btn = [self buttonWithType:UIButtonTypeCustom];
     [btn setTitle:title forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:imgName] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:norImgName] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:selImgName] forState:UIControlStateSelected];
     btn.titleLabel.textAlignment = NSTextAlignmentCenter;
     btn.titleLabel.font = [UIFont systemFontOfSize:15];
     

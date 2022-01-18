@@ -18,7 +18,7 @@
 
 typedef void (^ConditionBlock)(NSString *, NSArray *);
 
-@interface ZBDownMenuView : UIView<UITableViewDelegate, UITableViewDataSource>
+@interface ZBDownMenuView : UIView
 
 @property (weak, nonatomic) id<ZBDownMenuViewDelegate> delegate;
 @property (copy, nonatomic) ConditionBlock conditionBlock;

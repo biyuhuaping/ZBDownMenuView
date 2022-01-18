@@ -10,6 +10,6 @@
 
 @interface ZBButton : UIButton
 
-+ (instancetype)buttonTitle:(NSString *)title image:(NSString *)imgName target:(id)target action:(SEL)action;
++ (instancetype)buttonTitle:(NSString *)title norImgName:(NSString *)norImgName selImgName:(NSString *)selImgName target:(id)target action:(SEL)action;
 
 @end

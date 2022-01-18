@@ -21,59 +21,49 @@
 #import "ZBButton.h"
 
 
-@interface ZBDownMenuView ()
+@interface ZBDownMenuView ()<UITableViewDelegate, UITableViewDataSource>
 
-/* 半透明背景View */
+/// 半透明背景View
 @property (strong, nonatomic) UIView *bgView;
 @property (strong, nonatomic) UITableView *tableView;//cell为筛选的条件
 
-/**
- *  数据源--一维数组 (每一列的条件标题)
- */
+/// 数据源--一维数组 (每一列的条件标题)
 @property (strong, nonatomic) NSArray *dataSource;
 @property (strong, nonatomic) NSMutableArray *buttonArray;
 @property (strong, nonatomic) UIButton *currentButton;
 
-/* 分类内容 动画起始位置 */
+/// 分类内容 动画起始位置
 @property (assign, nonatomic) CGFloat startY;
 
 @end
 
 @implementation ZBDownMenuView
 
-- (void)layoutSubviews{
-    self.startY = CGRectGetMaxY(self.frame);
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        [self initUI];
+    }
+    return self;
 }
 
-#pragma mark - lazy
-/* 蒙层view */
-- (UIView *)bgView{
-    if (!_bgView) {
-        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, self.startY, kScreenWidth, kScreenHeight)];
-        _bgView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-        _bgView.hidden = YES;
-        UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenuView)];
-        [_bgView addGestureRecognizer:tapGest];
-        [self.superview addSubview:_bgView];
-        
+- (instancetype)initWithCoder:(NSCoder *)coder{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initUI];
     }
-    return _bgView;
+    return self;
 }
 
-/* 分类内容 */
-- (UITableView *)tableView{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] init];
-        _tableView.frame = CGRectMake(0, self.startY, kScreenWidth, 0);
-        _tableView.backgroundColor = [UIColor whiteColor];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.scrollEnabled = YES;
-        [self.superview addSubview:_tableView];
-        [self.superview sendSubviewToBack:_tableView];
-    }
-    return _tableView;
+- (void)initUI{
+    self.startY = CGRectGetHeight(self.frame);
+    [self addSubview:self.bgView];
+    [self addSubview:self.tableView];
 }
+
+//- (void)layoutSubviews{
+//    [super layoutSubviews];
+//    self.startY = CGRectGetHeight(self.frame);
+//}
 
 #pragma mark - setter
 // 设置文字 默认
@@ -87,8 +77,9 @@
     
     //根据titleArray配置带箭头的button
     for (NSInteger i = 0; i < titleArray.count; i++) {
-        ZBButton *titleBtn = [ZBButton buttonTitle:titleArray[i] image:@"灰箭头.png" target:self action:@selector(titleBtnClicked:)];
+        ZBButton *titleBtn = [ZBButton buttonTitle:titleArray[i] norImgName:@"灰箭头.png" selImgName:@"天蓝箭头.png" target:self action:@selector(titleBtnClicked:)];
         [titleBtn setTitleColor:TitleColorNormal forState:UIControlStateNormal];
+        [titleBtn setTitleColor:TitleColorSelected forState:UIControlStateSelected];
         titleBtn.frame = CGRectMake(i*btnW, 0, btnW, btnH);
         titleBtn.tag = i;
         
@@ -133,11 +124,9 @@
 
 #pragma mark - 显示/隐藏
 - (void)showMenuView {
-    self.bgView.hidden = NO;
-    [self.superview bringSubviewToFront:self.tableView];
-    
     [self.tableView reloadData];
     [UIView animateWithDuration:0.25 animations:^{
+        self.bgView.alpha = 0.3;
         self.tableView.frame = CGRectMake(0, self.startY, kScreenWidth, 44 * self.dataSource.count);
     } completion:nil];
 }
@@ -154,7 +143,7 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.tableView.frame = CGRectMake(0, self.startY, kScreenWidth, 0);
         _currentButton.imageView.transform = CGAffineTransformMakeRotation(0);
-        self.bgView.hidden = YES;
+        self.bgView.alpha = 0;
     } completion:nil];
 }
 
@@ -213,6 +202,31 @@
     // 走block
     !self.conditionBlock?:self.conditionBlock(self.dataSource[indexPath.row],currentTitleArr);
     [self hideMenuView];
+}
+
+#pragma mark - lazy
+/* 蒙层view */
+- (UIView *)bgView{
+    if (!_bgView) {
+        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, self.startY, kScreenWidth, kScreenHeight)];
+        _bgView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        _bgView.alpha = 0;
+        UITapGestureRecognizer *tapGest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenuView)];
+        [_bgView addGestureRecognizer:tapGest];
+    }
+    return _bgView;
+}
+
+/* 分类内容 */
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] init];
+        _tableView.frame = CGRectMake(0, self.startY, kScreenWidth, 0);
+        _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
 }
 
 @end

@@ -30,13 +30,12 @@
                                         @[@"1分钟以内", @"1-3分钟", @"3-5分钟", @"5分钟以上"]
                                         ].mutableCopy;
 
-    /**
-     *  回调方式一: block
-     */
+    /// 回调方式一: block
     __weak typeof(self) weakSelf = self;
     _downMenuView.conditionBlock = ^(NSString *currentTitle, NSArray *currentTitleArray){
         NSString *string = [NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", currentTitle, currentTitleArray];
         NSLog(@"%@",string);
+        
     };
 }
 
