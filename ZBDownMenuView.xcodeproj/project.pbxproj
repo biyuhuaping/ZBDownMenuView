@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3902A2342A690B3A004F585C /* YCMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3902A2332A690B3A004F585C /* YCMenuView.m */; };
 		C76D2CE8202D3CCC000A3B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */; };
 		C76D2CEB202D3CCC000A3B71 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C76D2CEA202D3CCC000A3B71 /* ViewController.m */; };
 		C76D2CEE202D3CCC000A3B71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76D2CEC202D3CCC000A3B71 /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3902A2322A690B3A004F585C /* YCMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCMenuView.h; sourceTree = "<group>"; };
+		3902A2332A690B3A004F585C /* YCMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCMenuView.m; sourceTree = "<group>"; };
 		C76D2CE3202D3CCC000A3B71 /* ZBDownMenuView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZBDownMenuView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76D2CE6202D3CCC000A3B71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3902A2312A690B3A004F585C /* YCMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				3902A2322A690B3A004F585C /* YCMenuView.h */,
+				3902A2332A690B3A004F585C /* YCMenuView.m */,
+			);
+			path = YCMenuView;
+			sourceTree = "<group>";
+		};
 		C76D2CDA202D3CCC000A3B71 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +133,7 @@
 				C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */,
 				C76D2CE9202D3CCC000A3B71 /* ViewController.h */,
 				C76D2CEA202D3CCC000A3B71 /* ViewController.m */,
+				3902A2312A690B3A004F585C /* YCMenuView */,
 				C76D2CEC202D3CCC000A3B71 /* Main.storyboard */,
 				C76D2CEF202D3CCC000A3B71 /* Assets.xcassets */,
 				C76D2CF1202D3CCC000A3B71 /* LaunchScreen.storyboard */,
@@ -277,6 +290,7 @@
 				C76D2D41202D8F76000A3B71 /* ZBButton.m in Sources */,
 				C76D2CF6202D3CCC000A3B71 /* main.m in Sources */,
 				C76D2CE8202D3CCC000A3B71 /* AppDelegate.m in Sources */,
+				3902A2342A690B3A004F585C /* YCMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
