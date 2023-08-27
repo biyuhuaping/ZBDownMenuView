@@ -16,25 +16,21 @@
 
 
 
-typedef void (^ConditionBlock)(NSString *, NSArray *);
+typedef void (^ConditionBlock)(NSString *title, NSArray *array);
 
 @interface ZBDownMenuView : UIView
 
 @property (weak, nonatomic) id<ZBDownMenuViewDelegate> delegate;
 @property (copy, nonatomic) ConditionBlock conditionBlock;
 
-/**
- *  数据源--二维数组
- *  每一个大分类里, 都可以有很多个小分类(条件)
- */
+/// 数据源--二维数组
+/// 每一个大分类里, 都可以有很多个小分类(条件)
 @property (strong, nonatomic) NSMutableArray *dataSourceArr;
 
-/* 默认显示的 */
+/// 默认显示的
 @property (strong, nonatomic) NSArray *titleArray;
 
-/**
- * 显示菜单
- */
+/// 显示菜单
 - (void)showMenuView;
 
 @end
