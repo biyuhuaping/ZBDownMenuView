@@ -9,12 +9,14 @@
 #import "ViewController.h"
 #import "ZBDownMenuView.h"
 #import "YCMenuView.h"
+#import "ZBCollectionMenuView.h"
 
 @interface ViewController ()<ZBDownMenuViewDelegate>
 @property (strong, nonatomic) IBOutlet ZBDownMenuView *downMenuView;
 @property (strong, nonatomic) NSMutableArray *dataListArray;
 @property (strong, nonatomic) NSMutableArray *allDataArray;
 @property (nonatomic, strong) UIButton *YCMenuBtn;
+@property (nonatomic, strong) UIButton *collectionMenuBtn;
 
 @end
 
@@ -22,10 +24,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = UIColor.lightGrayColor;
     [self conflictingDownMenuView];
     
     self.YCMenuBtn.frame = CGRectMake(15, 450, 120, 40);
     [self.view addSubview:self.YCMenuBtn];
+    
+    self.collectionMenuBtn.frame = CGRectMake(215, 450, 160, 40);
+    [self.view addSubview:self.collectionMenuBtn];
 }
 
 /* 配置DownMenuView */
@@ -50,6 +56,22 @@
  */
 - (void)downMenuView:(ZBDownMenuView *)menuView currentButtonTitle:(NSString *)title andCurrentTitleArray:(NSArray *)currentTitleArray{
     [NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", title, currentTitleArray];
+}
+
+#pragma mark - ZBCollectionMenuView
+- (void)collectionMenuBtnAction:(UIButton *)sender{
+    CGRect rect = [sender.superview convertRect:sender.frame toView:self.view];
+    CGFloat y = rect.origin.y;
+
+    __weak typeof(self) ws = self;
+    ZBCollectionMenuView *menuView = [[ZBCollectionMenuView alloc] initWithFrame:CGRectMake(0, y + 40, kScreenW, kScreenH - y)];
+    menuView.titleArray = @[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"11", @"12", @"13"];
+    menuView.block = ^(NSInteger selectedIndex) {
+//        ws.segmentView.selectedIndex = selectedIndex;
+//        [ws.pageController scrollToControllerAtIndex:selectedIndex animate:YES];
+    };
+    [menuView showMenuViewToView:self.view];
+//    menuView.selectedIndex = self.segmentView.selectedIndex;
 }
 
 #pragma mark - YCMenuBtn
@@ -117,6 +139,23 @@
         _YCMenuBtn = btn;
     }
     return _YCMenuBtn;
+}
+
+- (UIButton *)collectionMenuBtn{
+    if (!_collectionMenuBtn){
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.semanticContentAttribute = UISemanticContentAttributeForceRightToLeft;
+        [btn setImage:[UIImage imageNamed:@"shop_more"] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [btn setTitle:@"ZBCollectionMenuBtn" forState:UIControlStateNormal];
+        [btn setTitleColor:UIColor.blueColor forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(collectionMenuBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+        btn.layer.cornerRadius = 2.0;
+        btn.layer.borderWidth = 1.0;
+        btn.layer.borderColor = UIColor.blueColor.CGColor;
+        _collectionMenuBtn = btn;
+    }
+    return _collectionMenuBtn;
 }
 
 @end

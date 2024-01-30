@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3902A2342A690B3A004F585C /* YCMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3902A2332A690B3A004F585C /* YCMenuView.m */; };
+		39FA061A2B68E5CE007DD08E /* ZBCollectionMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FA06192B68E5CD007DD08E /* ZBCollectionMenuView.m */; };
 		C76D2CE8202D3CCC000A3B71 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */; };
 		C76D2CEB202D3CCC000A3B71 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C76D2CEA202D3CCC000A3B71 /* ViewController.m */; };
 		C76D2CEE202D3CCC000A3B71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C76D2CEC202D3CCC000A3B71 /* Main.storyboard */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		3902A2322A690B3A004F585C /* YCMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCMenuView.h; sourceTree = "<group>"; };
 		3902A2332A690B3A004F585C /* YCMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCMenuView.m; sourceTree = "<group>"; };
+		39FA06182B68E5CD007DD08E /* ZBCollectionMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBCollectionMenuView.h; sourceTree = "<group>"; };
+		39FA06192B68E5CD007DD08E /* ZBCollectionMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBCollectionMenuView.m; sourceTree = "<group>"; };
 		C76D2CE3202D3CCC000A3B71 /* ZBDownMenuView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZBDownMenuView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C76D2CE6202D3CCC000A3B71 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +112,15 @@
 			path = YCMenuView;
 			sourceTree = "<group>";
 		};
+		39FA06172B68E5CD007DD08E /* ZBCollectionMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				39FA06182B68E5CD007DD08E /* ZBCollectionMenuView.h */,
+				39FA06192B68E5CD007DD08E /* ZBCollectionMenuView.m */,
+			);
+			path = ZBCollectionMenuView;
+			sourceTree = "<group>";
+		};
 		C76D2CDA202D3CCC000A3B71 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		C76D2CE5202D3CCC000A3B71 /* ZBDownMenuView */ = {
 			isa = PBXGroup;
 			children = (
+				39FA06172B68E5CD007DD08E /* ZBCollectionMenuView */,
 				C76D2D0A202D3F1D000A3B71 /* ZBDownMenuView */,
 				C76D2CE6202D3CCC000A3B71 /* AppDelegate.h */,
 				C76D2CE7202D3CCC000A3B71 /* AppDelegate.m */,
@@ -291,6 +304,7 @@
 				C76D2CF6202D3CCC000A3B71 /* main.m in Sources */,
 				C76D2CE8202D3CCC000A3B71 /* AppDelegate.m in Sources */,
 				3902A2342A690B3A004F585C /* YCMenuView.m in Sources */,
+				39FA061A2B68E5CE007DD08E /* ZBCollectionMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
